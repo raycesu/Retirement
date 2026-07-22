@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { Figtree, Syne } from "next/font/google"
+import { Figtree, Syne, Space_Grotesk, IBM_Plex_Mono } from "next/font/google"
 import "./globals.css"
 
 const figtree = Figtree({
@@ -12,10 +12,21 @@ const syne = Syne({
   subsets: ["latin"],
 })
 
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
+  subsets: ["latin"],
+})
+
+const plexMono = IBM_Plex_Mono({
+  variable: "--font-plex-mono",
+  weight: ["400", "500", "600"],
+  subsets: ["latin"],
+})
+
 export const metadata: Metadata = {
-  title: "Deccum — Retirement spending simulator",
+  title: "Waterline — Retirement withdrawal engine",
   description:
-    "Map a year-by-year withdrawal sequence across 401(k), Roth, brokerage, and pension accounts while navigating RMDs, ACA cliffs, and IRMAA brackets.",
+    "Waterline holds one constant, sustainable spending line steady across your 401(k), Roth, brokerage, and pension accounts, re-optimizing every year against RMDs, ACA cliffs, and IRMAA brackets.",
 }
 
 export default function RootLayout({
@@ -26,7 +37,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${figtree.variable} ${syne.variable} h-full antialiased`}
+      className={`${figtree.variable} ${syne.variable} ${spaceGrotesk.variable} ${plexMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans">{children}</body>
     </html>

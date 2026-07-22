@@ -140,16 +140,6 @@
   }
 }
 
-@keyframes drift {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  50% {
-    transform: translate3d(-24px, 18px, 0) scale(1.05);
-  }
-}
-
 @utility animate-fade-up {
   animation: fadeUp 0.8s ease both;
 }
@@ -160,8 +150,4 @@
 
 @utility animate-fade-up-late {
   animation: fadeUp 1.15s ease both;
-}
-
-@utility animate-drift {
-  animation: drift 14s ease-in-out infinite;
 }
