@@ -75,7 +75,7 @@ export const CliffWarnings = ({ warnings }: CliffWarningsProps) => {
       <div className="flex items-center gap-2">
         <h3
           id="warnings-heading"
-          className="font-heading text-lg font-semibold text-[#122820]"
+          className="font-[family-name:var(--font-space-grotesk)] text-lg font-semibold text-[#132A40]"
         >
           Cliff warnings
         </h3>
