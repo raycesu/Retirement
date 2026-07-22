@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Deccum — Retirement Withdrawal Simulator
 
-## Getting Started
+Client-side Next.js calculator that maps a year-by-year withdrawal sequence across Traditional 401(k)/IRA, Roth, brokerage, and pension income. Each year is re-optimized as balances, tax brackets, RMDs, ACA subsidy cliffs, and IRMAA tiers shift.
 
-First, run the development server:
+## Stack
+
+- Next.js (App Router) + TypeScript
+- Tailwind CSS + shadcn/ui
+- Zustand (localStorage persistence)
+- react-hook-form + Zod
+- Recharts
+- Jest + React Testing Library
+
+## Develop
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Test
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm test
+```
 
-## Learn More
+## What it models
 
-To learn more about Next.js, take a look at the following resources:
+- Federal ordinary income brackets + standard deduction (Single / MFJ)
+- Stacked long-term capital gains brackets (0% / 15% / 20%)
+- Flat state tax rate input
+- RMD start ages (SECURE 2.0) + Uniform Lifetime Table
+- Early-withdrawal penalty with Rule of 55 exception
+- Roth contribution vs. earnings basis + 5-year rule toggle
+- Simplified ACA MAGI cliff using a user-entered benchmark premium
+- IRMAA surcharges with a 2-year MAGI lookback
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Optimization objective
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Find the **maximum constant, inflation-adjusted after-tax spending** sustainable to the plan end age. Within each year, a waterfilling allocator picks the lowest marginal-cost withdrawal source (Roth basis, brokerage basis, brokerage gains, Traditional, Roth earnings), respecting forced RMDs.
 
-## Deploy on Vercel
+## Disclaimer
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Educational planning tool only — not tax, legal, or investment advice. Tax constants live in `lib/tax-data/` and should be reviewed against IRS / CMS publications each year.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Future work
+
+- Full ACA subsidy calc with county / plan premium data
+- Per-state bracket tables
+- SEPP 72(t) exception
+- Monte Carlo / variable-return mode
