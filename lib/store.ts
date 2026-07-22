@@ -1,7 +1,7 @@
 "use client"
 
 import { create } from "zustand"
-import { persist } from "zustand/middleware"
+import { createJSONStorage, persist } from "zustand/middleware"
 import type { SimulationResult } from "@/lib/engine/types"
 import {
   defaultPlanFormValues,
@@ -19,6 +19,12 @@ type SimulatorStore = {
   setError: (error: string | null) => void
   resetForm: () => void
 }
+
+const createNoopStorage = () => ({
+  getItem: () => null,
+  setItem: () => undefined,
+  removeItem: () => undefined,
+})
 
 export const useSimulatorStore = create<SimulatorStore>()(
   persist(
@@ -40,6 +46,9 @@ export const useSimulatorStore = create<SimulatorStore>()(
     }),
     {
       name: "deccum-simulator",
+      storage: createJSONStorage(() =>
+        typeof window === "undefined" ? createNoopStorage() : localStorage
+      ),
       partialize: (state) => ({
         formValues: state.formValues,
         result: state.result,

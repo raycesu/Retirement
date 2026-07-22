@@ -3,7 +3,7 @@
 import { BalanceChart } from "@/components/results/balance-chart"
 import { CliffWarnings } from "@/components/results/cliff-warnings"
 import { WithdrawalMixChart } from "@/components/results/withdrawal-mix-chart"
-import { YearlyTable } from "@/components/results/yearly-table"
+import { YearlyPlan } from "@/components/results/yearly-plan"
 import type { SimulationResult } from "@/lib/engine/types"
 import { formatCurrency } from "@/lib/format"
 
@@ -69,15 +69,7 @@ export const ResultsView = ({ result }: ResultsViewProps) => {
       </section>
 
       {result.cliffWarnings.length > 0 ? (
-        <section className="space-y-3" aria-labelledby="warnings-heading">
-          <h3
-            id="warnings-heading"
-            className="font-heading text-lg font-semibold text-[#122820]"
-          >
-            Cliff warnings
-          </h3>
-          <CliffWarnings warnings={result.cliffWarnings} />
-        </section>
+        <CliffWarnings warnings={result.cliffWarnings} />
       ) : null}
 
       <section className="space-y-3" aria-labelledby="balances-heading">
@@ -123,10 +115,11 @@ export const ResultsView = ({ result }: ResultsViewProps) => {
             Year-by-year plan
           </h3>
           <p className="mt-1 text-sm text-muted-foreground">
-            Withdrawals, RMDs, taxes, spending, and ending balances for each year.
+            Scan the trajectory, then expand any 5-year block for withdrawals,
+            taxes, and ending balances.
           </p>
         </div>
-        <YearlyTable years={result.years} />
+        <YearlyPlan years={result.years} />
       </section>
     </div>
   )

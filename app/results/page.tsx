@@ -2,11 +2,13 @@
 
 import { useEffect, useState } from "react"
 import Link from "next/link"
+import { ExportPdfButton } from "@/components/results/export-pdf-button"
 import { ResultsView } from "@/components/results/results-view"
 import { useSimulatorStore } from "@/lib/store"
 
 export default function ResultsPage() {
   const result = useSimulatorStore((state) => state.result)
+  const formValues = useSimulatorStore((state) => state.formValues)
   const [hasHydrated, setHasHydrated] = useState(() =>
     useSimulatorStore.persist.hasHydrated()
   )
@@ -44,14 +46,19 @@ export default function ResultsPage() {
               sequence Deccum chose for this plan.
             </p>
           </div>
-          <Link
-            href="/plan"
-            className="inline-flex items-center rounded-lg border border-border/80 bg-card/80 px-4 py-2 text-sm font-medium text-[#122820] transition-colors hover:bg-muted/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-            aria-label="Edit plan inputs"
-            tabIndex={0}
-          >
-            Edit plan
-          </Link>
+          <div className="flex flex-wrap items-center gap-2">
+            {hasHydrated && result ? (
+              <ExportPdfButton result={result} formValues={formValues} />
+            ) : null}
+            <Link
+              href="/plan"
+              className="inline-flex h-9 items-center rounded-lg border border-border/80 bg-card/80 px-4 text-sm font-medium text-[#122820] transition-colors hover:bg-muted/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              aria-label="Edit plan inputs"
+              tabIndex={0}
+            >
+              Edit plan
+            </Link>
+          </div>
         </header>
 
         {!hasHydrated ? (
