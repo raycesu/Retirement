@@ -127,7 +127,7 @@ export const exportResultsToPdf = ({
   doc.setTextColor(...BRAND.white)
   doc.setFont("helvetica", "bold")
   doc.setFontSize(18)
-  doc.text("Deccum", PAGE_MARGIN, 12)
+  doc.text("Waterline", PAGE_MARGIN, 12)
 
   doc.setFont("helvetica", "normal")
   doc.setFontSize(10)
@@ -420,7 +420,7 @@ export const exportResultsToPdf = ({
   doc.setFontSize(8)
   doc.setTextColor(...BRAND.muted)
   const disclaimer = doc.splitTextToSize(
-    "This report summarizes Deccum's modeled withdrawal sequence based on the inputs and assumptions you provided. It is not tax, legal, or investment advice.",
+    "This report summarizes Waterline's modeled withdrawal sequence based on the inputs and assumptions you provided. It is not tax, legal, or investment advice.",
     CONTENT_WIDTH
   ) as string[]
   doc.text(disclaimer, PAGE_MARGIN, endingY)
@@ -433,7 +433,7 @@ export const exportResultsToPdf = ({
     doc.setFontSize(7.5)
     doc.setTextColor(...BRAND.muted)
     doc.text(
-      "Deccum simulation export · For planning purposes only",
+      "Waterline simulation export · For planning purposes only",
       PAGE_MARGIN,
       pageHeight - 8
     )

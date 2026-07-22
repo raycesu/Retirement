@@ -44,6 +44,7 @@ const NumberField = ({ id, label, register, error, step = "1" }: FieldProps) => 
         step={step}
         aria-label={label}
         aria-invalid={Boolean(error)}
+        className="font-[family-name:var(--font-plex-mono)]"
         {...register(id, { valueAsNumber: true })}
       />
       {error ? <p className="text-sm text-destructive">{error}</p> : null}
@@ -117,10 +118,13 @@ export const PlanForm = () => {
     >
       <section className="space-y-4" aria-labelledby="accounts-heading">
         <div>
-          <h2 id="accounts-heading" className="font-heading text-xl font-semibold">
+          <h2
+            id="accounts-heading"
+            className="font-[family-name:var(--font-space-grotesk)] text-xl font-semibold text-[#132A40]"
+          >
             Account balances
           </h2>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-sm text-[#3C5A72]">
             Enter current balances. Roth and brokerage track basis separately for tax rules.
           </p>
         </div>
@@ -162,10 +166,13 @@ export const PlanForm = () => {
 
       <section className="space-y-4" aria-labelledby="person-heading">
         <div>
-          <h2 id="person-heading" className="font-heading text-xl font-semibold">
+          <h2
+            id="person-heading"
+            className="font-[family-name:var(--font-space-grotesk)] text-xl font-semibold text-[#132A40]"
+          >
             Person & filing
           </h2>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-sm text-[#3C5A72]">
             Age, filing status, and penalty / healthcare toggles that change the drawdown path.
           </p>
         </div>
@@ -252,10 +259,13 @@ export const PlanForm = () => {
 
       <section className="space-y-4" aria-labelledby="income-heading">
         <div>
-          <h2 id="income-heading" className="font-heading text-xl font-semibold">
+          <h2
+            id="income-heading"
+            className="font-[family-name:var(--font-space-grotesk)] text-xl font-semibold text-[#132A40]"
+          >
             Fixed income
           </h2>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-sm text-[#3C5A72]">
             Pension and Social Security reduce how much you need to withdraw.
           </p>
         </div>
@@ -285,10 +295,13 @@ export const PlanForm = () => {
 
       <section className="space-y-4" aria-labelledby="aca-heading">
         <div>
-          <h2 id="aca-heading" className="font-heading text-xl font-semibold">
+          <h2
+            id="aca-heading"
+            className="font-[family-name:var(--font-space-grotesk)] text-xl font-semibold text-[#B3813C]"
+          >
             ACA & Medicare cliffs
           </h2>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-sm text-[#3C5A72]">
             Simplified MAGI thresholds using your estimated benchmark premium.
           </p>
         </div>
@@ -344,10 +357,13 @@ export const PlanForm = () => {
 
       <section className="space-y-4" aria-labelledby="assumptions-heading">
         <div>
-          <h2 id="assumptions-heading" className="font-heading text-xl font-semibold">
+          <h2
+            id="assumptions-heading"
+            className="font-[family-name:var(--font-space-grotesk)] text-xl font-semibold text-[#132A40]"
+          >
             Assumptions
           </h2>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-sm text-[#3C5A72]">
             Deterministic returns and inflation used for the multi-decade projection.
           </p>
         </div>
