@@ -1,5 +1,6 @@
 "use client"
 
+import { useRouter } from "next/navigation"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Loader2 } from "lucide-react"
@@ -51,8 +52,10 @@ const NumberField = ({ id, label, register, error, step = "1" }: FieldProps) => 
 }
 
 export const PlanForm = () => {
+  const router = useRouter()
   const formValues = useSimulatorStore((state) => state.formValues)
   const isRunning = useSimulatorStore((state) => state.isRunning)
+  const error = useSimulatorStore((state) => state.error)
   const setFormValues = useSimulatorStore((state) => state.setFormValues)
   const setResult = useSimulatorStore((state) => state.setResult)
   const setIsRunning = useSimulatorStore((state) => state.setIsRunning)
@@ -93,10 +96,13 @@ export const PlanForm = () => {
         result = findSustainableSpending(inputs)
       }
       setResult(result)
-    } catch (error) {
+      router.push("/results")
+    } catch (runError) {
       setResult(null)
       setError(
-        error instanceof Error ? error.message : "Simulation failed unexpectedly"
+        runError instanceof Error
+          ? runError.message
+          : "Simulation failed unexpectedly"
       )
     } finally {
       setIsRunning(false)
@@ -389,6 +395,15 @@ export const PlanForm = () => {
           />
         </div>
       </section>
+
+      {error ? (
+        <div
+          className="rounded-xl border border-destructive/40 bg-destructive/10 p-4 text-sm text-destructive"
+          role="alert"
+        >
+          {error}
+        </div>
+      ) : null}
 
       <div className="flex flex-wrap gap-3 pt-2">
         <Button

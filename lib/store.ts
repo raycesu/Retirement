@@ -42,6 +42,7 @@ export const useSimulatorStore = create<SimulatorStore>()(
       name: "deccum-simulator",
       partialize: (state) => ({
         formValues: state.formValues,
+        result: state.result,
       }),
     }
   )
