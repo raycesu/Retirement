@@ -41,10 +41,6 @@ export default function ResultsPage() {
             <h1 className="mt-3 font-[family-name:var(--font-space-grotesk)] text-3xl font-semibold tracking-tight text-[#132A40] sm:text-4xl">
               Simulation results
             </h1>
-            <p className="mt-2 max-w-2xl text-sm text-[#3C5A72] sm:text-base">
-              Your sustainable spending level and the year-by-year withdrawal
-              sequence Waterline chose for this plan.
-            </p>
           </div>
           <div className="flex flex-wrap items-center gap-2">
             {hasHydrated && result ? (

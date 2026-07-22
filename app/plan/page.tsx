@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { InfoTooltip } from "@/components/info-tooltip"
 import { PlanForm } from "@/components/plan-form/plan-form"
 
 export default function PlanPage() {
@@ -19,18 +20,23 @@ export default function PlanPage() {
           >
             Waterline
           </Link>
-          <h1 className="mt-3 font-[family-name:var(--font-space-grotesk)] text-3xl font-semibold tracking-tight text-[#132A40] sm:text-4xl">
-            Withdrawal planner
-          </h1>
-          <p className="mt-2 max-w-2xl text-sm text-[#3C5A72] sm:text-base">
-            Enter balances and assumptions. Waterline finds the highest
-            constant real spending your accounts can sustain, then chooses a
-            tax-aware withdrawal order each year.
-          </p>
-          <p className="mt-4 max-w-xl text-xs leading-relaxed text-[#3C5A72]/80">
-            Educational planning tool only — not tax, legal, or financial advice.
-            Tax constants are approximate and must be reviewed annually.
-          </p>
+          <div className="mt-3 flex items-center gap-2">
+            <h1 className="font-[family-name:var(--font-space-grotesk)] text-3xl font-semibold tracking-tight text-[#132A40] sm:text-4xl">
+              Withdrawal planner
+            </h1>
+            <InfoTooltip label="About the withdrawal planner">
+              <p>
+                Enter balances and assumptions. Waterline finds the highest
+                constant real spending your accounts can sustain, then chooses a
+                tax-aware withdrawal order each year.
+              </p>
+              <p className="text-xs leading-relaxed">
+                Educational planning tool only — not tax, legal, or financial
+                advice. Tax constants are approximate and must be reviewed
+                annually.
+              </p>
+            </InfoTooltip>
+          </div>
         </header>
 
         <PlanForm />
