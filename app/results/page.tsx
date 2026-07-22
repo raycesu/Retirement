@@ -41,10 +41,6 @@ export default function ResultsPage() {
             <h1 className="mt-3 font-heading text-3xl font-semibold tracking-tight text-[#122820] sm:text-4xl">
               Simulation results
             </h1>
-            <p className="mt-2 max-w-2xl text-sm text-muted-foreground sm:text-base">
-              Your sustainable spending level and the year-by-year withdrawal
-              sequence Deccum chose for this plan.
-            </p>
           </div>
           <div className="flex flex-wrap items-center gap-2">
             {hasHydrated && result ? (

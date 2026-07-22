@@ -148,13 +148,13 @@ function GaugeIllustration() {
 
 export default function HomePage() {
   return (
-    <main className="relative min-h-screen overflow-hidden bg-[#EEF2F5]">
+    <main className="relative h-svh overflow-hidden bg-[#EEF2F5]">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 opacity-60 [background-image:linear-gradient(to_right,rgba(19,42,64,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(19,42,64,0.06)_1px,transparent_1px)] [background-size:32px_32px]"
       />
 
-      <div className="relative mx-auto flex min-h-screen w-full max-w-6xl flex-col px-6 pb-16 pt-8 sm:px-10">
+      <div className="relative mx-auto flex h-svh w-full max-w-6xl flex-col px-6 py-8 sm:px-10">
         <header className="flex items-center justify-between border-b border-[#132A40]/10 pb-6">
           <p className="font-[family-name:var(--font-space-grotesk)] text-2xl font-semibold tracking-tight text-[#132A40] sm:text-3xl">
             Waterline
@@ -169,7 +169,7 @@ export default function HomePage() {
           </Link>
         </header>
 
-        <section className="grid flex-1 items-center gap-12 py-16 sm:py-20 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
+        <section className="grid flex-1 items-center gap-12 py-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
           <div className="motion-safe:animate-fade-up max-w-xl">
             <p className="font-[family-name:var(--font-plex-mono)] text-xs font-medium uppercase tracking-[0.2em] text-[#B3813C]">
               Retirement withdrawal engine
@@ -199,28 +199,6 @@ export default function HomePage() {
           <div className="motion-safe:animate-fade-up-delayed flex justify-center lg:justify-end">
             <GaugeIllustration />
           </div>
-        </section>
-
-        <section className="grid gap-8 border-t border-[#132A40]/10 pt-10 md:grid-cols-[1.2fr_1fr]">
-          <p className="motion-safe:animate-fade-up-delayed max-w-2xl text-base leading-relaxed text-[#3C5A72]">
-            A 52-year-old leaves a corporate job with savings spread across a
-            401(k), a Roth, a brokerage account, and an old pension. Pulling
-            from the wrong one first triggers early withdrawal penalties,
-            spikes taxable income, and pushes annual earnings past the
-            threshold for affordable healthcare coverage. Financial advisors
-            charge thousands for a custom drawdown plan. Everyone else
-            guesses.
-          </p>
-          <p className="motion-safe:animate-fade-up-late text-base leading-relaxed text-[#3C5A72]">
-            Waterline maps a year-by-year withdrawal sequence across every
-            account, accounting for RMDs, the{" "}
-            <span className="font-[family-name:var(--font-plex-mono)]">
-              59½
-            </span>{" "}
-            penalty, ACA subsidy cliffs, IRMAA brackets, and stacked
-            capital-gains rates — then re-optimizes as balances and tax
-            brackets shift.
-          </p>
         </section>
       </div>
     </main>
